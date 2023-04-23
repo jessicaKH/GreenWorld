@@ -2,28 +2,55 @@ const canvas = document.getElementById("renderCanvas"); // Get the canvas elemen
 const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
 
 const createScene = function () {
+
+    /****************CAMERA****************/ 
+
     // Creates a basic Babylon Scene object
     const scene = new BABYLON.Scene(engine);
+
     // Creates and positions a free camera
     const camera = new BABYLON.FreeCamera("camera1", 
-    new BABYLON.Vector3(0, 5, -10), scene);
+    new BABYLON.Vector3(0, 5,-10), scene);
+
     // Targets the camera to scene origin
     camera.setTarget(BABYLON.Vector3.Zero());
+
     // This attaches the camera to the canvas
     camera.attachControl(canvas, true);
+
+    /***************************************/ 
+
+    /*******************LUMIERE******************/ 
+
     // Creates a light, aiming 0,1,0 - to the sky
-    const light = new BABYLON.HemisphericLight("light", 
-    new BABYLON.Vector3(0, 1, 0), scene);
-    // Dim the light a small amount - 0 to 1
-    light.intensity = 0.7;
-    // Built-in 'sphere' shape.
-    const sphere = BABYLON.MeshBuilder.CreateSphere("sphere", 
-    {diameter: 2, segments: 32}, scene);
-    // Move the sphere upward 1/2 its height
-    sphere.position.y = 1;
+    var light = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(-1, 1, 0), scene);
+	//light.diffuse = new BABYLON.Color3(1, 0, 0);
+    
     // Built-in 'ground' shape.
     const ground = BABYLON.MeshBuilder.CreateGround("ground", 
-    {width: 6, height: 6}, scene);
+    {width: 10, height: 10}, scene);
+
+    // Grass texture
+    const grassText = new BABYLON.StandardMaterial("grassText");
+    grassText.diffuseTexture = new BABYLON.Texture("https://www.babylonjs-playground.com/textures/grass.png");
+    ground.material = grassText;
+
+    /*******************************************/ 
+
+    /***************SKYBOX***************** 
+    const skybox = BABYLON.MeshBuilder.CreateBox("skyBox", { size: 1000.0 }, scene);
+    const skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
+    skyboxMaterial.backFaceCulling = false;
+    skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("../bbylonImages/forest", scene);
+    skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
+    skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
+    skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
+    skybox.material = skyboxMaterial;
+
+
+
+    /*******************************************/ 
+    new BABYLON.PhotoDome("jess", "../bbylonImages/bigforest.jpg", { resolution: 32, size: 1000 }, scene);
     return scene;
 };
 
@@ -49,7 +76,7 @@ const labyrinthe = function () {
 };
 
 
-const scene = labyrinthe(); //Call the createScene function
+const scene = createScene(); //Call the createScene function
 // Register a render loop to repeatedly render the scene
 engine.runRenderLoop(function () {
     scene.render();
