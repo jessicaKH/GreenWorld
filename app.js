@@ -3,9 +3,9 @@ const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engi
 let SCENETORENDER = "menu"; // on affiche le menu en 1er lieu
 
 
-
 const sceneMenu = createSceneMenu();
 const sceneForet = createSceneForet(); //Call the createScene function
+
 
 // Register a render loop to repeatedly render the scene
 engine.runRenderLoop(function () {

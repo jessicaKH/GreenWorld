@@ -55,4 +55,5 @@ const createSceneMenu = function () {
     loadGUI();
 
     return scene;
+    
 };
