@@ -24,7 +24,7 @@ const createSceneMenu = function () {
     async function loadGUI() {
 
         var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("firstMenu", true, scene);
-        await advancedTexture.parseFromSnippetAsync("TNAKE1#34");
+        await advancedTexture.parseFromSnippetAsync("TNAKE1#35");
 
         const menuScreen = advancedTexture.getControlByName("menuScreen");
         const playScreen = advancedTexture.getControlByName("HTPscreen");
@@ -55,5 +55,5 @@ const createSceneMenu = function () {
     loadGUI();
 
     return scene;
-    
+
 };
