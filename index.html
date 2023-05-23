@@ -25,14 +25,24 @@
         
     <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
     <script src="https://preview.babylonjs.com/gui/babylon.gui.min.js"></script>
+
+    <script src="https://cdn.babylonjs.com/loaders/babylon.glTFFileLoader.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+    <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+
     </head>
 
    <body>
 
+    <div id="score" style="position: absolute; top: 30px; left: 30px; font-size: 40px;">Graines : 0</div>
+    <div id="timer" style="position: absolute; top: 30px; right: 30px; font-size: 40px;"></div>
+
 	<canvas id="renderCanvas"></canvas> <!--canvas for 3D scene-->
+    <script src="cansGame.js"></script>
     <script src="menu.js"></script>
     <script src="main.js"></script>
-    <script src="app.js"></script>
+    <script src="app.js"></script> <!--toujours charger app.js en dernier-->
     
    </body>
 

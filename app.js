@@ -5,9 +5,11 @@ let SCENETORENDER = "menu"; // on affiche le menu en 1er lieu
 
 const sceneMenu = createSceneMenu();
 const sceneForet = createSceneForet(); //Call the createScene function
+const sceneCans = createCanGame();
 
 
 // Register a render loop to repeatedly render the scene
+
 engine.runRenderLoop(function () {
     if (SCENETORENDER == "menu")
     {
@@ -17,10 +19,15 @@ engine.runRenderLoop(function () {
     {
         sceneForet.render();
     }
+    else if (SCENETORENDER == "cans")
+    {
+        sceneCans.render();
+    }
     else{
         console.log("mauvais SCENETORENDER");
     }
 });
+
 
 // Watch for browser/canvas resize events
 window.addEventListener("resize", function () {

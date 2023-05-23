@@ -86,6 +86,16 @@ const createSceneForet = function () {
 
     box.checkCollisions = true;
 
+    box.isPickable = true;
+    box.actionManager = new BABYLON.ActionManager(scene);
+
+    box.actionManager.registerAction(
+        new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger, function (evt) {
+            //box.isVisible = false; // Hide the box
+            SCENETORENDER = "cans";
+        })
+    );
+
 
     return scene;
     
