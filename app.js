@@ -18,6 +18,26 @@ const resetGame = sceneCansObj.resetGame;
 let isResetExecuted = false;
 
 
+//// POINTS /////
+
+let score = 0;
+
+function ajtPoints(nb){
+    score+=nb;
+    points.innerText = "Graines : "+score;
+}
+
+
+/////////////////
+
+
+
+//// CHRONO /////
+
+
+/////////////////
+
+
 // avec remove les autres scenes, ne pas oublier de les reactiver 
 
 engine.runRenderLoop(function () {

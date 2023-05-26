@@ -107,8 +107,10 @@ var createHangman = function () {
         var playerPosition = camera.position;
         //waterMesh.position.y au lieu de 5 mais renvoie juste 0
         if (playerPosition.y < 5) {
-            SCENETORENDER = "foret";
             isresetHangman = false;
+            SCENETORENDER = "foret";
+            // on le remonte sur la plateforme pour la prochaine fois
+            playerPosition.y = 15;
             console.log("Touched water");
         }
     });
@@ -184,14 +186,14 @@ var createHangman = function () {
         "tempete","crue","deluge","contamination","dechet","assainissement","rechauffement","catastrophe","riviere","ocean"
       ];
 
-    var random = Math.floor(Math.random() * mots.length);
+    /*var random = Math.floor(Math.random() * mots.length);
     motSecret = mots[random];
     console.log(motSecret);
 
     for(let i=0 ; i<motSecret.length;i++){
         motActuel[i]="_";
     }
-    textBlock.text=motActuel.join(' ');
+    textBlock.text=motActuel.join(' ');*/
       
 
     /* cas ou la lettre est dans le mot */
@@ -221,7 +223,8 @@ var createHangman = function () {
         if(!motActuel.includes("_")){
             SCENETORENDER = "foret";
             isresetHangman = false;
-            console.log("victoire bug");
+            console.log("victoire");
+            ajtPoints(6);
         }
         if(water.waveHeight >=1.6){
             for(let i=0 ; i<motSecret.length;i++){
@@ -238,19 +241,20 @@ var createHangman = function () {
     function resetHangman(){
 
         // rechoisir un mot dans la liste
-        var motSecret = "";
-        var motActuel = [];
+        motSecret = "";
+        motActuel = [];
 
         // mot choisi pour le pendu
         var random = Math.floor(Math.random() * mots.length);
         motSecret = mots[random];
-        console.log(motSecret);
+        console.log("word "+motSecret);
 
         // reinit le mot avec les tirets
 
-        for(let i=1 ; i<=motSecret.length;i++){
+        for(let i=0 ; i<motSecret.length;i++){
             motActuel[i]="_";
         }
+        console.log(motSecret.length);
         textBlock.text=motActuel.join(' ');
 
         //reinit le niveau de l'eau

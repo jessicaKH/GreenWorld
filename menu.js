@@ -42,7 +42,11 @@ const createSceneMenu = function () {
         var back = children2.filter(control => control.name === "Back")[0];
         console.log(HTPbutton, back);
 
-        playButton.onPointerClickObservable.add(() => SCENETORENDER = "foret");
+        playButton.onPointerClickObservable.add(() => {
+            SCENETORENDER = "foret";
+            var points = document.getElementById("score");
+            points.style.display = "block";
+        });
         playButton.onPointerClickObservable.add(() => menuScreen.isVisible = false);
     
         back.onPointerClickObservable.add(() => playScreen.isVisible = false);
