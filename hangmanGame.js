@@ -49,8 +49,8 @@ var createHangman = function () {
     box2.checkCollisions = true;
 
     // Doudou
-    /*const addPeluche = function(scene){
-        BABYLON.SceneLoader.ImportMesh("", "models/", "peluche4.glb", scene, function (newMeshes, particleSystems, skeletons, animationGroups) {
+    /**const addPeluche = function(scene){
+        BABYLON.SceneLoader.ImportMesh("", "models/", "peluche6.glb", scene, function (newMeshes, particleSystems, skeletons, animationGroups) {
             var an = newMeshes[0];
             an.position = new BABYLON.Vector3(0, 10, 20);
             an.scaling.scaleInPlace(0.7);
