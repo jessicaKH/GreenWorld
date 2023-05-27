@@ -5,10 +5,40 @@ let SCENETORENDER = "menu"; // on affiche le menu en 1er lieu
 
 const sceneMenu = createSceneMenu();
 const sceneForet = createSceneForet(); //Call the createScene function
-const sceneCans = createCanGame();
+
+const sceneHangmanObj = createHangman();
+const sceneHangman = sceneHangmanObj.scene;
+const resetHangman = sceneHangmanObj.resetHangman;
+let isresetHangman = false;
 
 
-// Register a render loop to repeatedly render the scene
+const sceneCansObj = createCanGame();
+const sceneCans = sceneCansObj.scene;
+const resetGame = sceneCansObj.resetGame;
+let isResetExecuted = false;
+
+
+//// POINTS /////
+
+let score = 0;
+
+function ajtPoints(nb){
+    score+=nb;
+    points.innerText = "Graines : "+score;
+}
+
+
+/////////////////
+
+
+
+//// CHRONO /////
+
+
+/////////////////
+
+
+// avec remove les autres scenes, ne pas oublier de les reactiver 
 
 engine.runRenderLoop(function () {
     if (SCENETORENDER == "menu")
@@ -17,11 +47,44 @@ engine.runRenderLoop(function () {
     }
     else if (SCENETORENDER == "foret")
     {
+
+        // remove les autres scenes de l'arriere plan //
+        sceneHangman.detachControl();
+        sceneCans.detachControl();
+        /*********************************************/
+
+        sceneForet.attachControl(); // reactiver la scene when called
         sceneForet.render();
     }
     else if (SCENETORENDER == "cans")
     {
+        // remove les autres scenes de l'arriere plan //
+        sceneHangman.detachControl();
+        sceneForet.detachControl();
+        /*********************************************/
+
+        sceneCans.attachControl(); // reactiver la scene when called
         sceneCans.render();
+
+        if (!isResetExecuted) {
+            resetGame();
+            isResetExecuted = true;
+          }
+    }
+    else if (SCENETORENDER == "hangman")
+    {
+        // remove les autres scenes de l'arriere plan //
+        sceneForet.detachControl();
+        sceneCans.detachControl();
+        /*********************************************/
+
+        sceneHangman.attachControl(); // reactiver la scene when called
+        sceneHangman.render();
+
+        if (!isresetHangman) {
+            resetHangman();
+            isresetHangman = true; // necessaire pr reinit une fois et pas en continu
+          }
     }
     else{
         console.log("mauvais SCENETORENDER");

@@ -40,7 +40,7 @@ const createSceneForet = function () {
     /*** SOL ***/
     
     // Built-in 'ground' shape.
-    const ground = BABYLON.MeshBuilder.CreateGround("ground", {width: 100, height: 100}, scene);
+    const ground = BABYLON.MeshBuilder.CreateGround("ground", {width: 300, height: 400}, scene);
 
     // Grass texture
     const grassText = new BABYLON.StandardMaterial("grassText");
@@ -93,6 +93,37 @@ const createSceneForet = function () {
         new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger, function (evt) {
             //box.isVisible = false; // Hide the box
             SCENETORENDER = "cans";
+        })
+    );
+
+    const box2 = BABYLON.MeshBuilder.CreateBox("box2", options);
+    box2.material = wallText;
+    box2.position = new BABYLON.Vector3(0, tailleCube / 2, 10);
+
+    box2.checkCollisions = true;
+
+    box2.isPickable = true;
+    box2.actionManager = new BABYLON.ActionManager(scene);
+
+    box2.actionManager.registerAction(
+        new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger, function (evt) {
+            SCENETORENDER = "hangman";
+        })
+    );
+
+    //// jeu anne marie 
+    const box3 = BABYLON.MeshBuilder.CreateBox("box3", options);
+    box3.material = wallText;
+    box3.position = new BABYLON.Vector3(0, tailleCube / 2, 40);
+
+    box3.checkCollisions = true;
+
+    box3.isPickable = true;
+    box3.actionManager = new BABYLON.ActionManager(scene);
+
+    box3.actionManager.registerAction(
+        new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger, function (evt) {
+            //SCENETORENDER = "hangman";
         })
     );
 
