@@ -4,7 +4,7 @@ const QuickTreeGenerator = function(sizeBranch, sizeTrunk, radius, trunkMaterial
     const tree = new BABYLON.Mesh("tree", scene);
 
     const leaves = BABYLON.MeshBuilder.CreateSphere("sphere", {segments: 2, diameter: sizeBranch})
-    //console.log(leaves.getBoundingInfo().boundingSphere.radius);
+    console.log(leaves.getBoundingInfo().boundingSphere.radius);
 
     const positions = leaves.getVerticesData(BABYLON.VertexBuffer.PositionKind);
     const indices = leaves.getIndices();
@@ -113,7 +113,7 @@ const addCharacterWithMouvement = async function(scene, meshes, fires, seeds, en
         character.checkCollisions = true;
         //shadow.checkCollisions = true;
         character.minZ = 0.45;
-        character.ellipsoid = new BABYLON.Vector3(5, 5, 2);
+        //character.ellipsoid = new BABYLON.Vector3(5, 5, 2);
     
         var ground2 = BABYLON.Mesh.CreateGround("ground1", 26, 26, 2, scene);        
         ground2.rotation = new BABYLON.Vector3(5, 0, 0);
@@ -193,7 +193,7 @@ const addCharacterWithMouvement = async function(scene, meshes, fires, seeds, en
                         for (var i=0; i<seeds.length; i++){
                             if (seeds[i].intersectsMesh(character, false)) {
                                 seeds[i].dispose();
-                                ajtPoints();
+                                ajtPoints(1);
                                 //button.textContent = cpt;
                                 seeds.splice(i,1);
                                 
@@ -409,7 +409,7 @@ let fires = [];
     
 
     //engine.displayLoadingUI();
-    for (var j=0; j<20; j++){
+    for (var j=0; j<15; j++){
         var r = randomNumber(-300,250);
         var r2 = randomNumber(-200, 100);
         /*const fireball = BABYLON.MeshBuilder.CreateSphere("sphere", {diameterX: 20, diameterY: 10, diameterZ: 10});
@@ -420,7 +420,7 @@ let fires = [];
         fire.material = fireMaterial;*/
 
         //fireball = BABYLON.Mesh.CreatePlane("fireplane", 1.5, scene);
-        fireball = BABYLON.MeshBuilder.CreateBox("plane", {height:5, width: 5, depth: 1});
+        fireball = BABYLON.MeshBuilder.CreateBox("plane", {height:5, width: 3, depth: 1});
         fireball.scaling.x = 10;
         fireball.scaling.y = 12;
 		fireball.billboardMode = BABYLON.Mesh.BILLBOARDMODE_Y;
