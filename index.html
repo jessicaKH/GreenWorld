@@ -3,7 +3,7 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Mother Nature</title> 
 
         <style> 
@@ -35,15 +35,22 @@
     <script src="https://cdn.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script> 
     <script>src="https://cdn.babylonjs.com/materialsLibrary/babylon.waterMaterial.js"</script> 
 
+    <script src="https://cdn.babylonjs.com/havok/HavokPhysics_umd.js"></script>
+
+    <script src="https://cdn.babylonjs.com/proceduralTexturesLibrary/babylonjs.proceduralTextures.min.js"></script>
+    <script src="https://cdn.babylonjs.com/materialsLibrary/babylon.fireMaterial.js"></script>
+
     </head>
 
    <body>
 
     <div id="score" style="position: absolute; top: 30px; left: 30px; font-size: 40px; display: none;">Graines : 0</div>
     <div id="timer" style="position: absolute; top: 30px; right: 30px; font-size: 40px;"></div>
+    <div id="mainGametimer" style="position: absolute; top: 30px; left: 700px; font-size: 20px; display: none;">Okay</div>
 
 	<canvas id="renderCanvas"></canvas> <!--canvas for 3D scene-->
     <script src="cansGame.js"></script>
+    <script src="jeux.js"></script>
     <script src="hangmanGame.js"></script>
     <script src="menu.js"></script>
     <script src="main.js"></script>

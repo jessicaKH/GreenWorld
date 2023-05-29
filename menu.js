@@ -46,6 +46,11 @@ const createSceneMenu = function () {
             SCENETORENDER = "foret";
             var points = document.getElementById("score");
             points.style.display = "block";
+            startCountdown();
+
+            var bigTimer = document.getElementById("mainGametimer");
+            bigTimer.style.display = "block";
+            bigTimer.style.backgroundColor = "#B2AC88";
         });
         playButton.onPointerClickObservable.add(() => menuScreen.isVisible = false);
     

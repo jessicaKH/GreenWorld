@@ -235,7 +235,7 @@ var createHangman = function () {
             SCENETORENDER = "foret";
             isresetHangman = false;
             console.log("victoire");
-            ajtPoints(6);
+            ajtPoints(4);
         }
         if(water.waveHeight >=1.6){
             for(let i=0 ; i<motSecret.length;i++){
