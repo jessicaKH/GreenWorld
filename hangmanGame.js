@@ -52,15 +52,17 @@ var createHangman = function () {
     box2.checkCollisions = true;
 
     // Doudou
-    /*const addPeluche = function(scene){
-        BABYLON.SceneLoader.ImportMesh("", "https://www.babylonjs-playground.com/textures/Rabbit.babylon", scene, function (newMeshes, particleSystems, skeletons, animationGroups) {
+    //const addPeluche = function(scene){
+        BABYLON.SceneLoader.ImportMesh("","models/", "Rabbit.babylon", scene, function (newMeshes, particleSystems, skeletons) {
             var an = newMeshes[0];
             an.position = new BABYLON.Vector3(0, 10, 20);
-            an.scaling.scaleInPlace(0.7);
-            an.rotate(BABYLON.Axis.Y, Math.PI, BABYLON.Space.LOCAL);
-        })
-    }
-    addPeluche(scene);*/
+            an.scaling.scaleInPlace(0.1);
+            //an.diffuseTexture = new BABYLON.Texture("https://www.babylonjs-playground.com/textures/ground.jpg", scene);
+        
+            //rotate(BABYLON.Axis.Y, Math.PI, BABYLON.Space.LOCAL);
+        });
+    //}
+    //addPeluche(scene);
 
     //////////////////
 
