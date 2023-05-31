@@ -158,10 +158,10 @@ engine.runRenderLoop(function () {
         sceneForet.attachControl(); // reactiver la scene when called
         sceneForet.render();
 
-        /*let music = new BABYLON.Sound("Music", "music/principal.mp3", sceneForet, null, {
+        let music = new BABYLON.Sound("Music", "music/principal.mp3", sceneForet, null, {
           loop: true,
           autoplay: true,
-        });*/
+        });
     }
     else if (SCENETORENDER == "cans")
     {
@@ -180,10 +180,10 @@ engine.runRenderLoop(function () {
             isResetExecuted = true;
           }
 
-          /*let music = new BABYLON.Sound("Music", "music/canettes.mp3", sceneCans, null, {
+          let music = new BABYLON.Sound("Music", "music/canettes.mp3", sceneCans, null, {
             loop: true,
             autoplay: true,
-          });*/
+          });
 
     }
     else if (SCENETORENDER == "hangman")
@@ -203,10 +203,10 @@ engine.runRenderLoop(function () {
             isresetHangman = true; // necessaire pr reinit une fois et pas en continu
           }
 
-          /*let music = new BABYLON.Sound("Music", "music/pendu.mp3", sceneHangman, null, {
+          let music = new BABYLON.Sound("Music", "music/pendu.mp3", sceneHangman, null, {
             loop: true,
             autoplay: true,
-          });*/
+          });
     }
 
     else if (SCENETORENDER == "miniJeu1")
@@ -221,10 +221,10 @@ engine.runRenderLoop(function () {
         scene.attachControl(); // reactiver la scene when called
         scene.render();
 
-        /*let music = new BABYLON.Sound("Music", "music/flamme.mp3", scene, null, {
+        let music = new BABYLON.Sound("Music", "music/flamme.mp3", scene, null, {
           loop: true,
           autoplay: true,
-        });*/
+        });
 
     }
     else if (SCENETORENDER == "bossFinal")
@@ -240,10 +240,10 @@ engine.runRenderLoop(function () {
         sceneBoss.render();
 
         
-          /*let music = new BABYLON.Sound("Music", "music/bigboss.mp3", sceneBoss, null, {
+          let music = new BABYLON.Sound("Music", "music/bigboss.mp3", sceneBoss, null, {
               loop: true,
               autoplay: true,
-            });*/
+            });
   
     }
 
