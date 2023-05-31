@@ -17,7 +17,9 @@ const sceneCans = sceneCansObj.scene;
 const resetGame = sceneCansObj.resetGame;
 let isResetExecuted = false;
 
-
+let startBoss = false;
+const sceneBoss = addFinalBoss();
+//const rappelle= sceneCansObj.rappelle;
 
 //// POINTS /////
 
@@ -35,23 +37,57 @@ function ajtPoints(nb){
 
 ///// BOUTON POUR ACCEDER A MERE NATURE APRES 1MIN////////////
 
-var buttonBigBoss = document.createElement("button");
-    buttonBigBoss.style.top = "100px";
-    buttonBigBoss.style.right = "30px";
-    buttonBigBoss.textContent = "Meet Mother Nature";
-    buttonBigBoss.style.width = "100px"
-    buttonBigBoss.style.height = "100px"
 
-    buttonBigBoss.setAttribute = ("id", "but");
-    buttonBigBoss.style.position = "absolute";
-	buttonBigBoss.style.color = "black";
+  // Create the button
+  const buttonContainer = document.createElement("div");
+  buttonContainer.style.position = "absolute";
+  buttonContainer.style.top = "40px";
+  buttonContainer.style.right = "20px";
 
-    document.body.appendChild(buttonBigBoss);
-    buttonBigBoss.style.display = "none";
+  const sheIsComingButton = document.createElement("button");
+  sheIsComingButton.textContent = "Recontrer Mère Nature";
+  sheIsComingButton.style.width = "100px";
+  sheIsComingButton.style.height = "70px";
+  sheIsComingButton.style.background = "#eee6d8";
+  sheIsComingButton.style.color = "black";
 
-    // if clicked acces au bigboss
+  sheIsComingButton.style.display = "none";
+
+  sheIsComingButton.addEventListener("click", () => {
+    //console.log("yay");
+    timerText.style.display = "none";
+    sheIsComingButton.style.display = "none";
+    bossGUI();
+  });
+
+  buttonContainer.appendChild(sheIsComingButton);
+  document.body.appendChild(buttonContainer);
+
 
 //////////////////////////////////////////////////////////
+
+
+
+
+/// AFFICHER GUI BOSS ////////////////////
+
+async function bossGUI(){
+  var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("firstMenu", true, sceneForet);
+  await advancedTexture.parseFromSnippetAsync("TNAKE1#44");
+  const menuScreen = advancedTexture.getControlByName("menuScreen");
+  let children1 = menuScreen.getDescendants();
+  var bossButton = children1.filter(control => control.name === "tryBoss")[0];
+  sheIsComingButton.style.display = "none";
+
+  bossButton.onPointerClickObservable.add(() => {
+    SCENETORENDER = "bossFinal";
+    timerText.style.display = "none";
+    sheIsComingButton.style.display = "none";
+    points.style.color = "white";
+});
+}
+
+/////////////////////////////////////////
 
 
 
@@ -75,15 +111,18 @@ function updateMainTimer() {
       const remaining = countdownDuration - elapsed;
   
       if (remaining <= 0) {
-        console.log("5 min"); //envoyer au big boss et faire disparaitre timer
+      bossGUI();
         startTime = null;
+        timerText.style.display = "none";
+        //SCENETORENDER="bossFinal";
+        
       } else {
         const minutes = Math.floor(remaining / 60000);
         const seconds = Math.floor((remaining % 60000) / 1000);
         timerText.innerText = `Mère Nature arrive... Temps restant : ${minutes} min ${seconds} sec`;
 
-        if (elapsed >= 2 * 60 * 1000) {
-            buttonBigBoss.style.display = "block";
+        if (elapsed >= 0.125* 60 * 1000) {
+          sheIsComingButton.style.display = "block";
           }
         }
       }
@@ -113,10 +152,16 @@ engine.runRenderLoop(function () {
         // remove les autres scenes de l'arriere plan //
         sceneHangman.detachControl();
         sceneCans.detachControl();
+        //sceneBoss.detachControl();
         /*********************************************/
 
         sceneForet.attachControl(); // reactiver la scene when called
         sceneForet.render();
+
+        /*let music = new BABYLON.Sound("Music", "music/principal.mp3", sceneForet, null, {
+          loop: true,
+          autoplay: true,
+        });*/
     }
     else if (SCENETORENDER == "cans")
     {
@@ -124,6 +169,7 @@ engine.runRenderLoop(function () {
         sceneHangman.detachControl();
         sceneForet.detachControl();
         scene.detachControl();
+        //sceneBoss.detachControl();
         /*********************************************/
 
         sceneCans.attachControl(); // reactiver la scene when called
@@ -133,6 +179,12 @@ engine.runRenderLoop(function () {
             resetGame();
             isResetExecuted = true;
           }
+
+          /*let music = new BABYLON.Sound("Music", "music/canettes.mp3", sceneCans, null, {
+            loop: true,
+            autoplay: true,
+          });*/
+
     }
     else if (SCENETORENDER == "hangman")
     {
@@ -140,6 +192,7 @@ engine.runRenderLoop(function () {
         sceneForet.detachControl();
         sceneCans.detachControl();
         scene.detachControl();
+        //sceneBoss.detachControl();
         /*********************************************/
 
         sceneHangman.attachControl(); // reactiver la scene when called
@@ -149,6 +202,11 @@ engine.runRenderLoop(function () {
             resetHangman();
             isresetHangman = true; // necessaire pr reinit une fois et pas en continu
           }
+
+          /*let music = new BABYLON.Sound("Music", "music/pendu.mp3", sceneHangman, null, {
+            loop: true,
+            autoplay: true,
+          });*/
     }
 
     else if (SCENETORENDER == "miniJeu1")
@@ -157,15 +215,36 @@ engine.runRenderLoop(function () {
         sceneForet.detachControl();
         sceneCans.detachControl();
         sceneHangman.detachControl();
+        //sceneBoss.detachControl();
         /*********************************************/
 
         scene.attachControl(); // reactiver la scene when called
         scene.render();
 
-        if (!isresetHangman) {
-            resetHangman();
-            isresetHangman = true; // necessaire pr reinit une fois et pas en continu
-          }
+        /*let music = new BABYLON.Sound("Music", "music/flamme.mp3", scene, null, {
+          loop: true,
+          autoplay: true,
+        });*/
+
+    }
+    else if (SCENETORENDER == "bossFinal")
+    {
+
+        // remove les autres scenes de l'arriere plan //
+        sceneHangman.detachControl();
+        sceneCans.detachControl();
+        sceneForet.detachControl();
+        scene.detachControl();
+        /*********************************************/
+
+        sceneBoss.render();
+
+        
+          /*let music = new BABYLON.Sound("Music", "music/bigboss.mp3", sceneBoss, null, {
+              loop: true,
+              autoplay: true,
+            });*/
+  
     }
 
     else{

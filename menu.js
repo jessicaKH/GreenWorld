@@ -4,7 +4,32 @@ const createSceneMenu = function () {
     const scene = new BABYLON.Scene(engine);
     //const scene = new BABYLON.Scene(engine);
     scene.clearColor = "#000000";
-    new BABYLON.PhotoDome("forest", "bbylonImages/bigforest.jpg", { resolution: 32, size: 1000 }, scene);
+
+    //new BABYLON.PhotoDome("forest", "bbylonImages/bigforest.jpg", { resolution: 32, size: 1000 }, scene);
+
+   new BABYLON.PhotoDome("forest", "bbylonImages/bigforest.jpg", { resolution: 32, size: 1000 }, scene);
+
+
+    //////////////////
+
+    //engine.displayLoadingUI();
+
+  // Create the photo dome asynchronously
+  /*const photoDome = new BABYLON.PhotoDome(
+    "forest",
+    "bbylonImages/bigforest.jpg",
+    { resolution: 32, size: 1000 },
+    scene,
+    function () {
+      // Photo dome is loaded and ready
+      // Hide the default Babylon.js loading screen
+      engine.hideLoadingUI();
+    }
+  );
+    ///////////////////*/
+
+
+
 
     // This creates and positions a free camera (non-mesh)
     const camera = new BABYLON.ArcRotateCamera("camera", BABYLON.Tools.ToRadians(90), BABYLON.Tools.ToRadians(65), 10, BABYLON.Vector3.Zero(), scene);
@@ -24,7 +49,7 @@ const createSceneMenu = function () {
     async function loadGUI() {
 
         var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("firstMenu", true, scene);
-        await advancedTexture.parseFromSnippetAsync("TNAKE1#36");
+        await advancedTexture.parseFromSnippetAsync("TNAKE1#42");
 
         const menuScreen = advancedTexture.getControlByName("menuScreen");
         const playScreen = advancedTexture.getControlByName("HTPscreen");

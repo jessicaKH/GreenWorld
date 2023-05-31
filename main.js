@@ -159,6 +159,10 @@ const addCharacter = function(scene){
 }
 
 const createSceneForet = function () {
+
+    //if (SCENETORENDER=="foret"){
+        
+    //}
     
     /**************************************Scene****************************************/
 /*    var columns = 6;
@@ -284,7 +288,7 @@ const createSceneForet = function () {
 
     // Create a material for the poster
     var posterMaterial = new BABYLON.StandardMaterial("posterMaterial", scene);
-    posterMaterial.diffuseTexture = new BABYLON.Texture("textures/canImage.png", scene);
+    posterMaterial.diffuseTexture = new BABYLON.Texture("textures/goodCanImage.png", scene);
     posterMaterial.backFaceCulling = false; 
 
     // Apply the material to the poster mesh
@@ -363,12 +367,15 @@ const createSceneForet = function () {
         
     // Create a material for the poster
     var posterMaterial = new BABYLON.StandardMaterial("posterMaterial", scene);
-    posterMaterial.diffuseTexture = new BABYLON.Texture("textures/fireImage.png", scene);
+    posterMaterial.diffuseTexture = new BABYLON.Texture("textures/goodFireImage.png", scene);
     posterMaterial.backFaceCulling = false; 
         
     // Apply the material to the poster mesh
     poster.material = posterMaterial;
  ///////////////////////////////////////////
+
+
+
  
     addCharacter(scene);
 

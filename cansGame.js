@@ -1,5 +1,6 @@
 const createCanGame = function () {
 
+ 
 
   const addRandomParasol = function(scene, count) {
       BABYLON.SceneLoader.ImportMesh("", "models/", "parasol.glb", scene, function(meshes) {

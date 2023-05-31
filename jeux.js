@@ -4,7 +4,7 @@ const QuickTreeGenerator = function(sizeBranch, sizeTrunk, radius, trunkMaterial
     const tree = new BABYLON.Mesh("tree", scene);
 
     const leaves = BABYLON.MeshBuilder.CreateSphere("sphere", {segments: 2, diameter: sizeBranch})
-    console.log(leaves.getBoundingInfo().boundingSphere.radius);
+    //console.log(leaves.getBoundingInfo().boundingSphere.radius);
 
     const positions = leaves.getVerticesData(BABYLON.VertexBuffer.PositionKind);
     const indices = leaves.getIndices();
@@ -136,7 +136,7 @@ const addCharacterWithMouvement = async function(scene, meshes, fires, seeds, en
         const run = scene.getAnimationGroupByName("RunInPlace");
         const movement = scene.onBeforeRenderObservable.add(() => {
     
-            character.moveWithCollisions(character.forward.scaleInPlace(1.21));
+            character.moveWithCollisions(character.forward.scaleInPlace(1.05));
             run.start(true, 1.6, run.from, run.to, false);
             //shadow.position.z+=0.21;
     
@@ -210,6 +210,7 @@ const addCharacterWithMouvement = async function(scene, meshes, fires, seeds, en
 /*************************************************************MINIJEU ****************************************************************************/
 
 const createMiniJeu = async function(){ //async
+    
     const meshes = []; 
     const options = {
         width: 4,

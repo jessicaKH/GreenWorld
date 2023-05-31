@@ -1,9 +1,12 @@
 var createHangman = function () {
+
+    
+
 	var scene = new BABYLON.Scene(engine);
 
      //Creates and positions a free camera
      const camera = new BABYLON.FreeCamera("camera1", 
-     new BABYLON.Vector3(0, 15,0), scene);
+     new BABYLON.Vector3(0, 15,-2), scene);
  
      // This attaches the camera to the canvas
      camera.attachControl(canvas, true);
@@ -49,8 +52,8 @@ var createHangman = function () {
     box2.checkCollisions = true;
 
     // Doudou
-    /**const addPeluche = function(scene){
-        BABYLON.SceneLoader.ImportMesh("", "models/", "peluche6.glb", scene, function (newMeshes, particleSystems, skeletons, animationGroups) {
+    /*const addPeluche = function(scene){
+        BABYLON.SceneLoader.ImportMesh("", "https://www.babylonjs-playground.com/textures/Rabbit.babylon", scene, function (newMeshes, particleSystems, skeletons, animationGroups) {
             var an = newMeshes[0];
             an.position = new BABYLON.Vector3(0, 10, 20);
             an.scaling.scaleInPlace(0.7);
@@ -232,19 +235,34 @@ var createHangman = function () {
 
     function victoire(){
         if(!motActuel.includes("_")){
-            SCENETORENDER = "foret";
+            for(let i=0 ; i<motSecret.length;i++){
+            motActuel[i] = motSecret[i];
+            }
+            textBlock.text = motActuel.join(' ');
+
+            setTimeout(function(){
+                SCENETORENDER = "foret";
+            isresetHangman = false;
+            ajtPoints(4);
+            },3000);
+
+            /*SCENETORENDER = "foret";
             isresetHangman = false;
             console.log("victoire");
-            ajtPoints(4);
+            ajtPoints(4);*/
         }
         if(water.waveHeight >=1.6){
             for(let i=0 ; i<motSecret.length;i++){
                 motActuel[i] = motSecret[i];
                 textBlock.text = motActuel.join(' ');
+                setTimeout(function(){
+                    SCENETORENDER = "foret";
+                    isresetHangman = false;
+                },2000);
             }
             console.log("you lost hangman");
-            isresetHangman = false;
-            SCENETORENDER = "foret";
+            //isresetHangman = false;
+            //SCENETORENDER = "foret";
         }
     }  
 
