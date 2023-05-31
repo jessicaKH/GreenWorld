@@ -121,7 +121,7 @@ function updateMainTimer() {
         const seconds = Math.floor((remaining % 60000) / 1000);
         timerText.innerText = `Mère Nature arrive... Temps restant : ${minutes} min ${seconds} sec`;
 
-        if (elapsed >= 0.125* 60 * 1000) {
+        if (elapsed >= 1* 60 * 1000) {
           sheIsComingButton.style.display = "block";
           }
         }
