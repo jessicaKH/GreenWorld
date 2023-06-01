@@ -415,12 +415,13 @@ function createLightningBolt(scene) {
                         ajtPoints(1);
                     }
                     ajtPoints(-1);
-                    if (shotCounter>graines){
+                    if (score==0){
                         var defaite = document.getElementById("defaite");
                         defaite.style.display = "block";
                         canvas.style.display = "none";
                         defaite.style.width = "100vw";
                         defaite.style.height = "95vh";
+			SCENETORENDER = "foret";
                     }
                     console.log("You fired " + shotCounter + " rounds");
                    console.log(shotCounter);
