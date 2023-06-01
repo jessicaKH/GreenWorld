@@ -3,6 +3,7 @@ let graines = 5;
 let evite = false;
 let inter = false;
 
+
 var addFinalBoss = function () {
         
         var scene = new BABYLON.Scene(engine);
@@ -183,6 +184,8 @@ function createLightningBolt(scene) {
             canvas.style.display = "none";
             defaite.style.width = "100vw";
             defaite.style.height = "100vh";
+            points.style.display = "none";
+            Mlives.innerText = "";
         }
 
 
@@ -421,6 +424,8 @@ function createLightningBolt(scene) {
                         canvas.style.display = "none";
                         defaite.style.width = "100vw";
                         defaite.style.height = "95vh";
+                        points.style.display = "none";
+                        Mlives.innerText = "";
 			SCENETORENDER = "foret";
                     }
                     console.log("You fired " + shotCounter + " rounds");
@@ -474,6 +479,7 @@ function createLightningBolt(scene) {
                                 enemyLifes = 9;
                                 enemy.position = new BABYLON.Vector3(100, 0, 0);
                                 console.log(enemy.position);
+                                retireLives(9);
                             
                                 //sphere.material.emissiveColor = new BABYLON.Color3.FromHexString("#5995ff");
                                 scene.onBeforeRenderObservable.remove(observer);
@@ -483,6 +489,7 @@ function createLightningBolt(scene) {
                                 console.log("8 lifes remaining");
                                 enemyLifes = 8;
                                 enemy.position = new BABYLON.Vector3(100, 0, -90);
+                                retireLives(8);
                         
                                 //sphere.material.emissiveColor = new BABYLON.Color3.FromHexString("#5995ff");
                                 scene.onBeforeRenderObservable.remove(observer);
@@ -492,6 +499,7 @@ function createLightningBolt(scene) {
                                 console.log("7 lifes remaining");
                                 enemyLifes = 7;
                                 enemy.position = new BABYLON.Vector3(200, 0, -70);
+                                retireLives(7);
                             
                                 //sphere.material.emissiveColor = new BABYLON.Color3.FromHexString("#5995ff");
                                 scene.onBeforeRenderObservable.remove(observer);
@@ -501,6 +509,7 @@ function createLightningBolt(scene) {
                                 console.log("6 lifes remaining");
                                 enemyLifes = 6;
                                 enemy.position = new BABYLON.Vector3(120, 0, 50);
+                                retireLives(6);
                             
                                 //sphere.material.emissiveColor = new BABYLON.Color3.FromHexString("#5995ff");
                                 scene.onBeforeRenderObservable.remove(observer);
@@ -510,6 +519,7 @@ function createLightningBolt(scene) {
                                 console.log("5 lifes remaining");
                                 enemyLifes = 5;
                                 enemy.position = new BABYLON.Vector3(-200, 0, -100);
+                                retireLives(5);
                             
                                 //sphere.material.emissiveColor = new BABYLON.Color3.FromHexString("#5995ff");
                                 scene.onBeforeRenderObservable.remove(observer);
@@ -519,6 +529,7 @@ function createLightningBolt(scene) {
                                 console.log("4 lifes remaining");
                                 enemyLifes = 4;
                                 enemy.position = new BABYLON.Vector3(200, 0, 250);
+                                retireLives(4);
                             
                                 //sphere.material.emissiveColor = new BABYLON.Color3.FromHexString("#5995ff");
                                 scene.onBeforeRenderObservable.remove(observer);
@@ -529,6 +540,7 @@ function createLightningBolt(scene) {
                                 console.log("3 lifes remaining");
                                 enemyLifes = 3;
                                 enemy.position = new BABYLON.Vector3(280,0, 110);
+                                retireLives(3);
     
                                 //sphere.material.emissiveColor = new BABYLON.Color3.FromHexString("#5995ff");
                                 scene.onBeforeRenderObservable.remove(observer);
@@ -539,6 +551,7 @@ function createLightningBolt(scene) {
                             console.log("2 lifes remaining");
                             enemyLifes = 2;
                             enemy.position = new BABYLON.Vector3(-270, 0, 100);
+                            retireLives(2);
                             
                             //sphere.material.emissiveColor = new BABYLON.Color3.FromHexString("#5995ff");
                             scene.onBeforeRenderObservable.remove(observer);
@@ -548,6 +561,7 @@ function createLightningBolt(scene) {
                             console.log("1 life remaining");
                             enemyLifes = 1;
                             enemy.position = new BABYLON.Vector3(-220, 0, -100);
+                            retireLives(1);
                             
                             //sphere.material.emissiveColor = new BABYLON.Color3.FromHexString("#095575");
                             sphere.dispose();
@@ -557,6 +571,7 @@ function createLightningBolt(scene) {
                         case 1:
                             console.log("kill");
                             enemyLifes = 0;
+                            Mlives.style.display = "none";
                             for (let i=0; i<enemy.length; i++){
                                 enemy[i].dispose();
                             }
@@ -567,6 +582,8 @@ function createLightningBolt(scene) {
                             canvas.style.display = "none";
                             victoire.style.width = "100vw";
                             victoire.style.height = "95vh";
+                            points.style.display = "none";
+                            Mlives.innerText = "";
 
                         }
                     

@@ -63,7 +63,11 @@ function ajtPoints(nb){
   buttonContainer.appendChild(sheIsComingButton);
   document.body.appendChild(buttonContainer);
 
+  Mlives = document.getElementById("MNlives");
 
+  function retireLives(vies){
+    Mlives.innerText = "Vies de Mère Nature : "+vies;
+}
 //////////////////////////////////////////////////////////
 
 
@@ -77,13 +81,15 @@ async function bossGUI(){
   const menuScreen = advancedTexture.getControlByName("menuScreen");
   let children1 = menuScreen.getDescendants();
   var bossButton = children1.filter(control => control.name === "tryBoss")[0];
-  sheIsComingButton.style.display = "none";
+  //sheIsComingButton.style.display = "none";
 
   bossButton.onPointerClickObservable.add(() => {
     SCENETORENDER = "bossFinal";
     timerText.style.display = "none";
-    sheIsComingButton.style.display = "none";
+    //sheIsComingButton.style.display = "none";
+    buttonContainer.removeChild(sheIsComingButton);
     points.style.color = "white";
+    retireLives(10);
 });
 }
 
